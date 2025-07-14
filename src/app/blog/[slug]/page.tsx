@@ -3,10 +3,27 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { client, blogPostQuery, BlogPost, PortableTextBlock } from '@/lib/sanity'
 import { Calendar, ArrowLeft, Share2 } from 'lucide-react'
+import { Metadata } from 'next'
 
 interface BlogPostPageProps {
   params: {
     slug: string
+  }
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const post = await client.fetch(blogPostQuery, { slug: params.slug })
+
+  if (!post) {
+    return {
+      title: 'Not Found',
+      description: 'The page you are looking for does not exist.',
+    }
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
   }
 }
 
@@ -73,11 +90,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-emerald-50 via-cyan-50 to-blue-50 py-12">
+      <div className="bg-green-50 py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link 
             href="/blog"
-            className="inline-flex items-center space-x-2 text-emerald-600 hover:text-emerald-700 mb-8 transition-colors"
+            className="inline-flex items-center space-x-2 text-green-600 hover:text-green-700 mb-8 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Kembali ke Blog</span>
@@ -95,7 +112,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   {formatDate(post.publishedAt)}
                 </time>
               </div>
-              <button className="flex items-center space-x-2 hover:text-emerald-600 transition-colors">
+              <button className="flex items-center space-x-2 hover:text-green-600 transition-colors">
                 <Share2 className="h-4 w-4" />
                 <span>Bagikan</span>
               </button>
@@ -162,7 +179,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               
               <Link 
                 href="/rekomendasi"
-                className="bg-emerald-600 text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-colors inline-block"
+                className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors inline-block"
               >
                 Dapatkan Rekomendasi AI
               </Link>
@@ -205,7 +222,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </p>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500">{article.date}</span>
-                  <span className="text-emerald-600 hover:text-emerald-700 cursor-pointer">
+                  <span className="text-green-600 hover:text-green-700 cursor-pointer">
                     Baca →
                   </span>
                 </div>
