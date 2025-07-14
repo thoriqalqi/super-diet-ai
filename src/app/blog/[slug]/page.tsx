@@ -206,7 +206,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 title: "Cara Menghitung Kebutuhan Kalori Harian",
                 excerpt: "Pelajari cara menghitung kebutuhan kalori yang tepat untuk mencapai tujuan diet Anda",
                 date: "2024-01-10"
-              },\n              {
+              },
+              {
                 title: "Makanan Super untuk Menurunkan Berat Badan",
                 excerpt: "Daftar makanan yang dapat membantu proses penurunan berat badan secara alami",
                 date: "2024-01-05"
