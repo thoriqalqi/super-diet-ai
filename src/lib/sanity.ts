@@ -15,6 +15,15 @@ export function urlFor(source: { asset: { _ref: string } }) {
   return builder.image(source)
 }
 
+// Define a basic type for Portable Text blocks
+export interface PortableTextBlock {
+  _key: string;
+  _type: string;
+  children?: Array<{ _key: string; _type: string; marks?: string[]; text: string }>;
+  markDefs?: Array<any>; // Can be more specific if needed
+  style?: string;
+}
+
 // Schema types
 export interface BlogPost {
   _id: string
@@ -24,7 +33,7 @@ export interface BlogPost {
   }
   publishedAt: string
   excerpt: string
-  body: any[]
+  body: PortableTextBlock[]
   mainImage?: {
     asset: {
       _ref: string

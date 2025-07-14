@@ -32,8 +32,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     })
   }
 
-  const renderPortableText = (blocks: any[]) => {
-    return blocks.map((block: any, index: number) => {
+  const renderPortableText = (blocks: { _type: string, style?: string, children: { text: string }[] }[]) => {
+    return blocks.map((block: { _type: string, style?: string, children: { text: string }[] }, index: number) => {
       if (block._type === 'block') {
         const style = block.style || 'normal'
         

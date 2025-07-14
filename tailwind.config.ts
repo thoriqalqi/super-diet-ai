@@ -28,11 +28,6 @@ const config: Config = {
         'teal-50': '#f0fdfa',
         'indigo-50': '#eef2ff',
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
     },
   },
   plugins: [],
