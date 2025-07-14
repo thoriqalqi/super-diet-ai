@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Brain, Mail, Phone, MapPin } from 'lucide-react'
+import { Mail } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <Brain className="h-8 w-8 text-emerald-400" />
+              <Mail className="h-8 w-8 text-emerald-400" />
               <span className="font-bold text-xl">Super Diet AI</span>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">

@@ -24,7 +24,7 @@ export default function FormRekomendasi({ onSubmit, loading }: FormRekomendasiPr
     onSubmit(formData)
   }
 
-  const handleChange = (field: keyof DietInput, value: any) => {
+  const handleChange = (field: keyof DietInput, value: string | number | 'male' | 'female' | 'lose' | 'gain' | 'maintain' | 'sedentary' | 'light' | 'moderate' | 'active' | 'very-active') => {
     setFormData(prev => ({ ...prev, [field]: value }))
   }
 
