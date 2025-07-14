@@ -3,9 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { client, blogPostQuery, BlogPost, PortableTextBlock } from '@/lib/sanity'
 import { Calendar, ArrowLeft, Share2 } from 'lucide-react'
-import { Metadata } from 'next'
+import { Metadata, PageProps } from 'next'
 
-interface BlogPostPageProps {
+interface BlogPostPageProps extends PageProps {
   params: {
     slug: string
   }
@@ -206,8 +206,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 title: "Cara Menghitung Kebutuhan Kalori Harian",
                 excerpt: "Pelajari cara menghitung kebutuhan kalori yang tepat untuk mencapai tujuan diet Anda",
                 date: "2024-01-10"
-              },
-              {
+              },\n              {
                 title: "Makanan Super untuk Menurunkan Berat Badan",
                 excerpt: "Daftar makanan yang dapat membantu proses penurunan berat badan secara alami",
                 date: "2024-01-05"
