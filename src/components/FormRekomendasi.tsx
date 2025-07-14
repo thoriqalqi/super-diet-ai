@@ -133,7 +133,7 @@ export default function FormRekomendasi({ onSubmit, loading }: FormRekomendasiPr
           </label>
           <select
             value={formData.activityLevel}
-            onChange={(e) => handleChange('activityLevel', e.target.value as any)}
+            onChange={(e) => handleChange("activityLevel", e.target.value as "sedentary" | "light" | "moderate" | "active" | "very-active")}
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
           >
             <option value="sedentary">Tidak Aktif (duduk sepanjang hari)</option>

@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { client, blogPostQuery, BlogPost } from '@/lib/sanity'
+import { client, blogPostQuery, BlogPost, PortableTextBlock } from '@/lib/sanity'
 import { Calendar, ArrowLeft, Share2 } from 'lucide-react'
 
 interface BlogPostPageProps {
@@ -32,34 +32,36 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     })
   }
 
-  const renderPortableText = (blocks: { _type: string, style?: string, children: { text: string }[] }[]) => {
-    return blocks.map((block: { _type: string, style?: string, children: { text: string }[] }, index: number) => {
+  const renderPortableText = (blocks: PortableTextBlock[]) => {
+    return blocks.map((block: PortableTextBlock, index: number) => {
       if (block._type === 'block') {
         const style = block.style || 'normal'
         
+        const childrenText = block.children?.map(child => child.text).join('') || ''
+
         switch (style) {
           case 'h1':
             return (
               <h1 key={index} className="text-3xl font-bold text-gray-900 mb-6 mt-8">
-                {block.children.map((child: any) => child.text).join('')}
+                {childrenText}
               </h1>
             )
           case 'h2':
             return (
               <h2 key={index} className="text-2xl font-bold text-gray-900 mb-4 mt-6">
-                {block.children.map((child: any) => child.text).join('')}
+                {childrenText}
               </h2>
             )
           case 'h3':
             return (
               <h3 key={index} className="text-xl font-bold text-gray-900 mb-3 mt-5">
-                {block.children.map((child: any) => child.text).join('')}
+                {childrenText}
               </h3>
             )
           default:
             return (
               <p key={index} className="text-gray-700 mb-4 leading-relaxed">
-                {block.children.map((child: any) => child.text).join('')}
+                {childrenText}
               </p>
             )
         }
@@ -215,4 +217,5 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     </div>
   )
 }
+
 

@@ -124,7 +124,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-emerald-600 to-cyan-600">
+      <section className="py-20 bg-gradient-to-r from-green-500 to-blue-500">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Siap Memulai Perjalanan Diet Anda?
